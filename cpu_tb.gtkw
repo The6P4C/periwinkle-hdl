@@ -1,0 +1,95 @@
+[*]
+[*] GTKWave Analyzer v3.3.77 (w)1999-2016 BSI
+[*] Sat Dec 07 11:29:35 2019
+[*]
+[dumpfile] "D:\Projects\periwinkle-hdl\cpu_tb.vcd"
+[dumpfile_mtime] "Sat Dec 07 11:29:31 2019"
+[dumpfile_size] 4430
+[savefile] "D:\Projects\periwinkle-hdl\cpu_tb.gtkw"
+[timestart] 0
+[size] 1920 1017
+[pos] -1 -1
+*-1.907605 4 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] cpu_tb.
+[sst_width] 214
+[signals_width] 285
+[sst_expanded] 1
+[sst_vpaned_height] 300
+@28
+cpu_tb.UUT.i_clk
+@200
+-
+@22
+cpu_tb.UUT.reg_pc[31:0]
+@200
+-
+-Instruction Decoding
+@22
+cpu_tb.UUT.instr[39:0]
+@200
+-
+@28
+cpu_tb.UUT.instr_transfer
+@22
+cpu_tb.UUT.instr_source[31:0]
+cpu_tb.UUT.instr_dest[5:0]
+@200
+-
+@28
+cpu_tb.UUT.instr_dest_reg_is_spr
+@22
+cpu_tb.UUT.instr_dest_reg[4:0]
+@200
+-
+-For instr_transfer == 1'b0
+@22
+cpu_tb.UUT.instr_source_literal[31:0]
+@200
+-
+-For instr_transfer == 1'b1
+@28
+cpu_tb.UUT.instr_source_reg_is_spr
+@22
+cpu_tb.UUT.instr_source_reg[4:0]
+@200
+-
+@22
+cpu_tb.UUT.source_value[31:0]
+@200
+-
+-GPRs
+@22
+cpu_tb.reg_gprs0[31:0]
+cpu_tb.reg_gprs1[31:0]
+cpu_tb.reg_gprs2[31:0]
+cpu_tb.reg_gprs3[31:0]
+cpu_tb.reg_gprs4[31:0]
+cpu_tb.reg_gprs5[31:0]
+cpu_tb.reg_gprs6[31:0]
+cpu_tb.reg_gprs7[31:0]
+cpu_tb.reg_gprs8[31:0]
+cpu_tb.reg_gprs9[31:0]
+cpu_tb.reg_gprs10[31:0]
+cpu_tb.reg_gprs11[31:0]
+cpu_tb.reg_gprs12[31:0]
+cpu_tb.reg_gprs13[31:0]
+cpu_tb.reg_gprs14[31:0]
+cpu_tb.reg_gprs15[31:0]
+cpu_tb.reg_gprs16[31:0]
+cpu_tb.reg_gprs17[31:0]
+cpu_tb.reg_gprs18[31:0]
+cpu_tb.reg_gprs19[31:0]
+cpu_tb.reg_gprs20[31:0]
+cpu_tb.reg_gprs21[31:0]
+cpu_tb.reg_gprs22[31:0]
+cpu_tb.reg_gprs23[31:0]
+cpu_tb.reg_gprs24[31:0]
+cpu_tb.reg_gprs25[31:0]
+cpu_tb.reg_gprs26[31:0]
+cpu_tb.reg_gprs27[31:0]
+cpu_tb.reg_gprs28[31:0]
+cpu_tb.reg_gprs29[31:0]
+cpu_tb.reg_gprs30[31:0]
+cpu_tb.reg_gprs31[31:0]
+[pattern_trace] 1
+[pattern_trace] 0
