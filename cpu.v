@@ -11,6 +11,40 @@ module cpu(
 	reg [31:0] reg_pc = 32'b0;
 
 	reg [31:0] reg_gprs [0:31];
+	initial begin
+		reg_gprs[0] = 32'b0;
+		reg_gprs[1] = 32'b0;
+		reg_gprs[2] = 32'b0;
+		reg_gprs[3] = 32'b0;
+		reg_gprs[4] = 32'b0;
+		reg_gprs[5] = 32'b0;
+		reg_gprs[6] = 32'b0;
+		reg_gprs[7] = 32'b0;
+		reg_gprs[8] = 32'b0;
+		reg_gprs[9] = 32'b0;
+		reg_gprs[10] = 32'b0;
+		reg_gprs[11] = 32'b0;
+		reg_gprs[12] = 32'b0;
+		reg_gprs[13] = 32'b0;
+		reg_gprs[14] = 32'b0;
+		reg_gprs[15] = 32'b0;
+		reg_gprs[16] = 32'b0;
+		reg_gprs[17] = 32'b0;
+		reg_gprs[18] = 32'b0;
+		reg_gprs[19] = 32'b0;
+		reg_gprs[20] = 32'b0;
+		reg_gprs[21] = 32'b0;
+		reg_gprs[22] = 32'b0;
+		reg_gprs[23] = 32'b0;
+		reg_gprs[24] = 32'b0;
+		reg_gprs[25] = 32'b0;
+		reg_gprs[26] = 32'b0;
+		reg_gprs[27] = 32'b0;
+		reg_gprs[28] = 32'b0;
+		reg_gprs[29] = 32'b0;
+		reg_gprs[30] = 32'b0;
+		reg_gprs[31] = 32'b0;
+	end
 
 	/*
 	 * Instruction decoding
