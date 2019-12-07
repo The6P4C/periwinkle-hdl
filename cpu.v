@@ -7,6 +7,7 @@ module cpu(
 	parameter SPR_PC = 0;
 	parameter SPR_SIZ = 8;
 	parameter SPR_SINZ = 9;
+	parameter SPR_NULL = 12;
 	reg [31:0] reg_pc = 32'b0;
 
 	reg [31:0] reg_gprs [0:31];
@@ -42,6 +43,7 @@ module cpu(
 			if (instr_source_reg_is_spr) begin
 				case (instr_source_reg)
 					SPR_PC: source_value = reg_pc;
+					SPR_NULL: source_value = 0;
 					default: source_value = 0;
 				endcase
 			end else begin
