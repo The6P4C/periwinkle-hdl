@@ -37,6 +37,9 @@ module cpu_tb;
 	wire [31:0] reg_gprs29 = UUT.reg_gprs[29];
 	wire [31:0] reg_gprs30 = UUT.reg_gprs[30];
 	wire [31:0] reg_gprs31 = UUT.reg_gprs[31];
+	wire [31:0] datamem0 = UUT.datamem[0];
+	wire [31:0] datamem1 = UUT.datamem[1];
+	wire [31:0] datamem2 = UUT.datamem[2];
 	initial begin
 		$dumpfile("cpu_tb.vcd");
 		$dumpvars(0, cpu_tb);

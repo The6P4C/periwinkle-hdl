@@ -4,11 +4,23 @@ module cpu(
 	reg [39:0] progmem [0:255];
 	initial $readmemb("progmem.txt", progmem);
 
+	reg [6:0] i;
+	reg [31:0] datamem [0:(2**6-1)];
+	initial begin
+		for (i = 0; i < 2**6; i = i + 1) begin
+			datamem[i] = 0;
+		end
+	end
+
 	parameter SPR_PC = 0;
 	parameter SPR_SIZ = 8;
 	parameter SPR_SINZ = 9;
+	parameter SPR_REF = 10;
+	parameter SPR_DEF = 11;
 	parameter SPR_NULL = 12;
 	reg [31:0] reg_pc = 32'b0;
+	reg [5:0] reg_ref = 6'b0;
+	wire [31:0] reg_def = datamem[reg_ref];
 
 	reg [31:0] reg_gprs [0:31];
 	initial begin
@@ -77,6 +89,8 @@ module cpu(
 			if (instr_source_reg_is_spr) begin
 				case (instr_source_reg)
 					SPR_PC: source_value = reg_pc;
+					SPR_REF: source_value = reg_ref;
+					SPR_DEF: source_value = reg_def;
 					SPR_NULL: source_value = 0;
 					default: source_value = 0;
 				endcase
@@ -108,7 +122,10 @@ module cpu(
 
 	always @(posedge i_clk) begin
 		if (instr_dest_reg_is_spr) begin
-			// TODO: Write to SPR
+			case (instr_dest_reg)
+				SPR_REF: reg_ref <= source_value;
+				SPR_DEF: datamem[reg_ref] <= source_value;
+			endcase
 		end else begin
 			reg_gprs[instr_dest_reg] <= source_value;
 		end
