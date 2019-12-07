@@ -1,0 +1,56 @@
+[*]
+[*] GTKWave Analyzer v3.3.77 (w)1999-2016 BSI
+[*] Sat Dec 07 14:11:14 2019
+[*]
+[dumpfile] "D:\Projects\periwinkle-hdl\alu_ops_tb.vcd"
+[dumpfile_mtime] "Sat Dec 07 14:10:47 2019"
+[dumpfile_size] 8099
+[savefile] "D:\Projects\periwinkle-hdl\alu_ops_tb.gtkw"
+[timestart] 3
+[size] 1920 1017
+[pos] -1 -1
+*-2.056748 11 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] alu_ops_tb.
+[sst_width] 197
+[signals_width] 395
+[sst_expanded] 1
+[sst_vpaned_height] 300
+@28
+alu_ops_tb.clk
+@200
+-
+@28
+alu_ops_tb.UUT_and.i_data_valid
+@22
+alu_ops_tb.UUT_and.i_data[31:0]
+@200
+-
+@28
+alu_ops_tb.UUT_and.i_result_ready
+@200
+-
+-PLUS
+@28
+alu_ops_tb.UUT_plus.o_result_valid
+@22
+alu_ops_tb.UUT_plus.o_result[31:0]
+@200
+-AND
+@28
+alu_ops_tb.UUT_and.o_result_valid
+@22
+alu_ops_tb.UUT_and.o_result[31:0]
+@200
+-OR
+@28
+alu_ops_tb.UUT_or.o_result_valid
+@22
+alu_ops_tb.UUT_or.o_result[31:0]
+@200
+-XOR
+@28
+alu_ops_tb.UUT_xor.o_result_valid
+@22
+alu_ops_tb.UUT_xor.o_result[31:0]
+[pattern_trace] 1
+[pattern_trace] 0

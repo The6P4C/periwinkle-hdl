@@ -8,6 +8,8 @@ sim_cpu: cpu_tb.vcd
 
 sim_alu_op_cell: alu_op_cell_tb.vcd
 
+sim_alu_ops: alu_ops_tb.vcd
+
 clean:
 	rm -f cpu_tb.vcd cpu_tb.out
 
@@ -23,4 +25,10 @@ alu_op_cell_tb.vcd: alu_op_cell_tb.out
 alu_op_cell_tb.out: alu.v alu_op_cell_tb.v
 	$(IVERILOG) -B $(IVERILOG_IVL) -o $@ -D VCD_OUTPUT=alu_op_cell_tb.vcd $(IVERILOG_LIB) alu.v alu_op_cell_tb.v
 
-.PHONY: sim_cpu sim_alu_op_cell clean
+alu_ops_tb.vcd: alu_ops_tb.out
+	$(VVP) -M $(IVERILOG_IVL) $^
+
+alu_ops_tb.out: alu.v alu_ops_tb.v
+	$(IVERILOG) -B $(IVERILOG_IVL) -o $@ -D VCD_OUTPUT=alu_ops_tb.vcd $(IVERILOG_LIB) alu.v alu_ops_tb.v
+
+.PHONY: sim_cpu sim_alu_op_cell sim_alu_ops clean
