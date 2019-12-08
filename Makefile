@@ -16,8 +16,11 @@ clean:
 cpu_tb.vcd: cpu_tb.out
 	$(VVP) -M $(IVERILOG_IVL) $^
 
-cpu_tb.out: cpu.v cpu_tb.v progmem.txt
-	$(IVERILOG) -B $(IVERILOG_IVL) -o $@ -D VCD_OUTPUT=cpu_tb.vcd $(IVERILOG_LIB) cpu.v cpu_tb.v
+cpu_tb.out: alu.v cpu.v cpu_tb.v progmem.txt
+	$(IVERILOG) -B $(IVERILOG_IVL) -o $@ -D VCD_OUTPUT=cpu_tb.vcd $(IVERILOG_LIB) alu.v cpu.v cpu_tb.v
+
+progmem.txt: prog.txt
+	python assemble.py prog.txt progmem.txt
 
 alu_op_cell_tb.vcd: alu_op_cell_tb.out
 	$(VVP) -M $(IVERILOG_IVL) $^
