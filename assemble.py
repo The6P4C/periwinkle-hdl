@@ -9,15 +9,28 @@ REGISTERS = [
     'GPR24', 'GPR25', 'GPR26', 'GPR27', 'GPR28', 'GPR29', 'GPR30', 'GPR31'
 ]
 
+UINT32_MAX = 0xFFFF_FFFF
+INT32_MIN = -0x7FFF_FFFF
+
+def parse_literal(literal):
+    multiplier = 1
+    if literal.startswith('-'):
+        multiplier = -1
+        literal = literal[1:]
+
+    if literal.startswith('0x'):
+        value = int(literal[2:], 16)
+    elif literal.startswith('0b'):
+        value = int(literal[2:], 2)
+    else:
+        value = int(literal)
+
+    return value * multiplier
+
 def decode_operand(operand):
     if operand.startswith('#'):
         literal = operand[1:]
-
-        if literal.startswith('0x'):
-            return ('literal', int(literal[2:], 16))
-        if literal.startswith('0b'):
-            return ('literal', int(literal[2:], 2))
-        return ('literal', int(literal))
+        return ('literal', parse_literal(literal))
     else:
         return ('register', operand.upper())
 
@@ -28,6 +41,8 @@ def encode_instruction(source, dest):
 
     if source[0] == 'literal':
         source_literal = source[1]
+        if source_literal < 0:
+            source_literal = (~(-source_literal) & UINT32_MAX) + 1
         return f'0_0_{source_literal:032b}_{dest_register:06b}'
     else:
         source_register = REGISTERS.index(source[1])
@@ -51,6 +66,9 @@ def main():
         source = decode_operand(instruction[0])
         dest = decode_operand(instruction[1])
 
+        if source[0] == 'literal' and (source[1] > UINT32_MAX or source[1] < INT32_MIN):
+            print(f'error: "{line}" - source literal too wide')
+            return
         if source[0] == 'register' and source[1] not in REGISTERS:
             print(f'error: "{line}" - invalid register in source')
             return
