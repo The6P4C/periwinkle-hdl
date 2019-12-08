@@ -1,3 +1,10 @@
 *.out
 *.vcd
 progmem.txt
+
+# APIO
+.sconsign.dblite
+abc.history
+hardware.blif
+hardware.asc
+hardware.bin

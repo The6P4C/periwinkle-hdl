@@ -2,9 +2,12 @@
 
 module cpu_tb;
 	reg clk;
+	wire [7:0] gpio;
 
 	cpu UUT (
-		.i_clk(clk)
+		.i_clk(clk),
+
+		.o_gpio(gpio)
 	);
 
 	wire [31:0] reg_gprs0 = UUT.reg_gprs[0];
