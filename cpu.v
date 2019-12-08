@@ -44,6 +44,7 @@ module cpu(
 
 	parameter SPR_PC = 0;
 	parameter SPR_STATUS = 1;
+	parameter SPR_RNG = 3;
 	parameter SPR_ALU_OPS_XMASK = 4'b1xx;
 	parameter SPR_SIZ = 8;
 	parameter SPR_SINZ = 9;
@@ -52,6 +53,7 @@ module cpu(
 	parameter SPR_NULL = 12;
 	reg [31:0] reg_pc = 32'b0;
 	reg [4:0] reg_status = 5'b0;
+	reg [31:0] reg_rng = 32'b0;
 	reg [5:0] reg_ref = 6'b0;
 	wire [31:0] reg_def = datamem[reg_ref];
 
@@ -113,9 +115,13 @@ module cpu(
 	/*
 	 * Source value calculation
 	 */
+	reg rng_next;
+
 	reg [31:0] source_value;
 
 	always @(*) begin
+		rng_next = 1'b0;
+
 		alu_output_op = 2'b0;
 		alu_result_empty = 1'b0;
 
@@ -126,6 +132,10 @@ module cpu(
 				casex (instr_source_reg)
 					SPR_PC: source_value = reg_pc;
 					SPR_STATUS: source_value = reg_status;
+					SPR_RNG: begin
+						source_value = reg_rng;
+						rng_next = 1'b1;
+					end
 					SPR_ALU_OPS_XMASK: begin
 						alu_output_op = instr_source_reg[1:0];
 						alu_result_empty = 1'b1;
@@ -172,9 +182,11 @@ module cpu(
 		end
 	end
 
+	wire rng_next_bit = ^(reg_rng & 32'h800007D8);
 	always @(posedge i_clk) begin
 		if (instr_dest_reg_is_spr) begin
 			case (instr_dest_reg)
+				SPR_RNG: reg_rng <= source_value;
 				SPR_REF: reg_ref <= source_value;
 				SPR_DEF: datamem[reg_ref] <= source_value;
 			endcase
@@ -185,6 +197,9 @@ module cpu(
 		reg_pc <= next_pc;
 		if (alu_result_valid) begin
 			reg_status <= {27'b0, alu_result_flags};
+		end
+		if (rng_next) begin
+			reg_rng <= {rng_next_bit, reg_rng[31:1]};
 		end
 	end
 endmodule
