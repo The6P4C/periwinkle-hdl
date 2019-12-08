@@ -1,3 +1,5 @@
+import re
+
 REGISTERS = [
     'PC', 'STATUS', 'STK', 'RNG', 'PLUS', 'AND', 'OR', 'XOR', 'SIZ',
     'SINZ', 'REF', 'DEF', 'NULL', 'RES0', 'RES1', 'RES2', 'RES3',
@@ -55,7 +57,7 @@ def main():
     lines = list(filter(lambda line: len(line) != 0, lines))
 
     instructions = lines
-    instructions = [(line, line.split(' ')) for line in lines]
+    instructions = [(line, re.split('\s', line)) for line in lines]
 
     opcodes = []
     for line, instruction in instructions:
