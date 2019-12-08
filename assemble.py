@@ -2,7 +2,7 @@ import re
 
 REGISTERS = [
     'PC', 'STATUS', 'STK', 'RNG', 'PLUS', 'AND', 'OR', 'XOR', 'SIZ',
-    'SINZ', 'REF', 'DEF', 'NULL', 'RES0', 'RES1', 'RES2', 'RES3',
+    'SINZ', 'REF', 'DEF', 'NULL', 'GPIO', 'RES1', 'RES2', 'RES3', # GPIO was RES0
     'RES4', 'RES5', 'RES6', 'RES7', 'RES8', 'RES9', 'RES10', 'RES11',
     'RES12', 'RES13', 'RES14', 'RES15', 'RES16', 'RES17', 'RES18',
     'GPR0', 'GPR1', 'GPR2', 'GPR3', 'GPR4', 'GPR5', 'GPR6', 'GPR7',

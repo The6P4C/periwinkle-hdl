@@ -1,7 +1,9 @@
 `default_nettype none
 
 module cpu(
-	input i_clk
+	input i_clk,
+
+	output [7:0] o_gpio
 );
 	reg [39:0] progmem [0:255];
 	initial $readmemb("progmem.txt", progmem);
@@ -51,11 +53,15 @@ module cpu(
 	parameter SPR_REF = 10;
 	parameter SPR_DEF = 11;
 	parameter SPR_NULL = 12;
+	parameter SPR_GPIO = 13;
 	reg [31:0] reg_pc = 32'b0;
 	reg [4:0] reg_status = 5'b0;
 	reg [31:0] reg_rng = 32'b0;
 	reg [5:0] reg_ref = 6'b0;
 	wire [31:0] reg_def = datamem[reg_ref];
+	reg [7:0] reg_gpio = 8'b0;
+
+	assign o_gpio = reg_gpio;
 
 	reg [31:0] reg_gprs [0:31];
 	initial begin
@@ -116,6 +122,7 @@ module cpu(
 					SPR_REF: source_value = reg_ref;
 					SPR_DEF: source_value = reg_def;
 					SPR_NULL: source_value = 0;
+					SPR_GPIO: source_value = reg_gpio;
 					default: source_value = 0;
 				endcase
 			end else begin
@@ -161,6 +168,7 @@ module cpu(
 				SPR_RNG: reg_rng <= source_value;
 				SPR_REF: reg_ref <= source_value;
 				SPR_DEF: datamem[reg_ref] <= source_value;
+				SPR_GPIO: reg_gpio <= source_value;
 			endcase
 		end else begin
 			reg_gprs[instr_dest_reg] <= source_value;
