@@ -1,8 +1,9 @@
 VVP:=vvp
 IVERILOG:=iverilog
 
-IVERILOG_IVL:=C:\\Users\\The6P4C\\.apio\\packages\\toolchain-iverilog\\lib\\ivl
-IVERILOG_LIB:=C:\\Users\\The6P4C\\.apio\\packages\\toolchain-iverilog\\vlib\\cells_sim.v
+# Replace with the correct paths for your system
+#IVERILOG_IVL:=
+#IVERILOG_LIB:=
 
 sim_cpu: cpu_tb.vcd
 sim_alu_op_cell: alu_op_cell_tb.vcd
