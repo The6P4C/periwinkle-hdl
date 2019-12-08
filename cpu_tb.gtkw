@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.77 (w)1999-2016 BSI
-[*] Sun Dec 08 03:10:20 2019
+[*] Sun Dec 08 03:17:50 2019
 [*]
 [dumpfile] "D:\Projects\periwinkle-hdl\cpu_tb.vcd"
-[dumpfile_mtime] "Sun Dec 08 03:03:50 2019"
-[dumpfile_size] 17015
+[dumpfile_mtime] "Sun Dec 08 03:15:31 2019"
+[dumpfile_size] 17107
 [savefile] "D:\Projects\periwinkle-hdl\cpu_tb.gtkw"
 [timestart] 0
 [size] 1920 1017
 [pos] -1 -1
-*-2.907605 12 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-2.907605 24 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] cpu_tb.
 [treeopen] cpu_tb.UUT.
 [treeopen] cpu_tb.UUT.ALU.
@@ -51,7 +51,7 @@ cpu_tb.UUT.instr_dest_reg[4:0]
 @200
 -
 -For instr_transfer == 1'b0
-@23
+@22
 [color] 3
 cpu_tb.UUT.instr_source_literal[31:0]
 @200
@@ -88,6 +88,8 @@ cpu_tb.UUT.alu_result_flags[4:0]
 @200
 -
 -SPRs
+@29
+cpu_tb.UUT.reg_status[4:0]
 @22
 cpu_tb.UUT.reg_ref[5:0]
 cpu_tb.UUT.reg_def[31:0]

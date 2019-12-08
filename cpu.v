@@ -43,6 +43,7 @@ module cpu(
 	);
 
 	parameter SPR_PC = 0;
+	parameter SPR_STATUS = 1;
 	parameter SPR_ALU_OPS_XMASK = 4'b1xx;
 	parameter SPR_SIZ = 8;
 	parameter SPR_SINZ = 9;
@@ -50,6 +51,7 @@ module cpu(
 	parameter SPR_DEF = 11;
 	parameter SPR_NULL = 12;
 	reg [31:0] reg_pc = 32'b0;
+	reg [4:0] reg_status = 5'b0;
 	reg [5:0] reg_ref = 6'b0;
 	wire [31:0] reg_def = datamem[reg_ref];
 
@@ -123,6 +125,7 @@ module cpu(
 			if (instr_source_reg_is_spr) begin
 				casex (instr_source_reg)
 					SPR_PC: source_value = reg_pc;
+					SPR_STATUS: source_value = reg_status;
 					SPR_ALU_OPS_XMASK: begin
 						alu_output_op = instr_source_reg[1:0];
 						alu_result_empty = 1'b1;
@@ -180,5 +183,8 @@ module cpu(
 		end
 
 		reg_pc <= next_pc;
+		if (alu_result_valid) begin
+			reg_status <= {27'b0, alu_result_flags};
+		end
 	end
 endmodule
