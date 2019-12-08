@@ -51,7 +51,7 @@ module alu_op_cell_plus(
 	wire [31:0] op_b;
 	wire [31:0] op_result = op_a + op_b;
 
-	alu_op_cell UUT (
+	alu_op_cell op_cell (
 		.i_clk(i_clk),
 
 		.i_data_valid(i_data_valid),
@@ -81,7 +81,7 @@ module alu_op_cell_and(
 	wire [31:0] op_b;
 	wire [31:0] op_result = op_a & op_b;
 
-	alu_op_cell UUT (
+	alu_op_cell op_cell (
 		.i_clk(i_clk),
 
 		.i_data_valid(i_data_valid),
@@ -111,7 +111,7 @@ module alu_op_cell_or(
 	wire [31:0] op_b;
 	wire [31:0] op_result = op_a | op_b;
 
-	alu_op_cell UUT (
+	alu_op_cell op_cell (
 		.i_clk(i_clk),
 
 		.i_data_valid(i_data_valid),
@@ -141,7 +141,7 @@ module alu_op_cell_xor(
 	wire [31:0] op_b;
 	wire [31:0] op_result = op_a ^ op_b;
 
-	alu_op_cell UUT (
+	alu_op_cell op_cell (
 		.i_clk(i_clk),
 
 		.i_data_valid(i_data_valid),
@@ -182,7 +182,7 @@ module alu(
 	reg result_empty_plus;
 	wire result_valid_plus;
 	wire [31:0] result_plus;
-	alu_op_cell_plus UUT_plus (
+	alu_op_cell_plus op_cell_plus (
 		.i_clk(i_clk),
 
 		.i_data_valid(data_valid_plus),
@@ -197,7 +197,7 @@ module alu(
 	reg result_empty_and;
 	wire result_valid_and;
 	wire [31:0] result_and;
-	alu_op_cell_and UUT_and (
+	alu_op_cell_and op_cell_and (
 		.i_clk(i_clk),
 
 		.i_data_valid(data_valid_and),
@@ -212,7 +212,7 @@ module alu(
 	reg result_empty_or;
 	wire result_valid_or;
 	wire [31:0] result_or;
-	alu_op_cell_or UUT_or (
+	alu_op_cell_or op_cell_or (
 		.i_clk(i_clk),
 
 		.i_data_valid(data_valid_or),
@@ -227,7 +227,7 @@ module alu(
 	reg result_empty_xor;
 	wire result_valid_xor;
 	wire [31:0] result_xor;
-	alu_op_cell_xor UUT_xor (
+	alu_op_cell_xor op_cell_xor (
 		.i_clk(i_clk),
 
 		.i_data_valid(data_valid_xor),
