@@ -5,13 +5,14 @@ IVERILOG_IVL:=C:\\Users\\The6P4C\\.apio\\packages\\toolchain-iverilog\\lib\\ivl
 IVERILOG_LIB:=C:\\Users\\The6P4C\\.apio\\packages\\toolchain-iverilog\\vlib\\cells_sim.v
 
 sim_cpu: cpu_tb.vcd
-
 sim_alu_op_cell: alu_op_cell_tb.vcd
-
 sim_alu_ops: alu_ops_tb.vcd
 
 clean:
-	rm -f cpu_tb.vcd cpu_tb.out
+	rm -f \
+		cpu_tb.vcd cpu_tb.out progmem.txt \
+		alu_op_cell_tb.out alu_op_cell_tb.out \
+		alu_ops_tb.vcd alu_ops_tb.out
 
 cpu_tb.vcd: cpu_tb.out
 	$(VVP) -M $(IVERILOG_IVL) $^
