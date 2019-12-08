@@ -169,6 +169,7 @@ module cpu(
 
 		if (instr_dest_reg_is_spr) begin
 			casex (instr_dest_reg)
+				SPR_PC: next_pc = source_value;
 				SPR_ALU_OPS_XMASK: begin
 					alu_input_op = instr_dest_reg[1:0];
 					alu_data_valid = 1'b1;
